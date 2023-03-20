@@ -1,4 +1,5 @@
 # model settings
+# add pretrained path
 model = dict(
     type='FasterRCNN',
     backbone=dict(
