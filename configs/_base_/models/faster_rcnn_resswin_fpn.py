@@ -1,6 +1,4 @@
 # model settings
-resnet_pretrained = '/pretrained/resnet50.pth'
-swinT_pretrained = '/pretrained/swin_tiny_patch4_window7_224.pth'
 model = dict(
     type='FasterRCNN',
     backbone=dict(
@@ -12,7 +10,7 @@ model = dict(
         resnet_norm_cfg=dict(type='BN', requires_grad=True),
         resnet_norm_eval=True,
         resnet_style='pytorch',
-        resnet_init_cfg=dict(type='Pretrained', checkpoint=resnet_pretrained),
+        resnet_init_cfg=dict(type='Pretrained', checkpoint='torchvision://resnet50'),
         swinT_embed_dims=96,
         swinT_depths=[2, 2, 6, 2],
         swinT_num_heads=[3, 6, 12, 24],
@@ -27,7 +25,7 @@ model = dict(
         swinT_out_indices=(0, 1, 2, 3),
         swinT_with_cp=False,
         swinT_convert_weights=True,
-        swinT_init_cfg=dict(type='Pretrained', checkpoint=swinT_pretrained),
+        swinT_init_cfg=dict(type='Pretrained', checkpoint='https://github.com/SwinTransformer/storage/releases/download/v1.0.0/swin_tiny_patch4_window7_224.pth'),
         ),
     neck=dict(
         type='FPN',
